@@ -1,6 +1,5 @@
 import telepot
 import os
-import yaml
 import random
 import time
 from quotes import load_quotes
