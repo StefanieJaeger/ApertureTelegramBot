@@ -1,7 +1,7 @@
 import telepot
 import os
-import yaml
 import random
+from quotes import load_quotes
 
 
 try:
@@ -12,12 +12,12 @@ except telepot.exception.BadHTTPResponse:
 
 
 def get_quote():
-    with open('good_morning_quotes.yml', encoding='utf8') as file:
-        try:
-            quotes = yaml.load(file.read())['quotes']
-            return random.choice(quotes)
-        except:
-            print('Unable to read quotes')
+    try:
+        quotes = load_quotes('quotes/good_morning.txt')
+        return random.choice(quotes)
+    except:
+        print('Unable to read quotes')
+        exit(1)
 
 
 bot.sendMessage(os.environ['GROUP_ID'], get_quote())

@@ -1,8 +1,8 @@
 import telepot
 import os
-import yaml
 import random
 import time
+from quotes import load_quotes
 
 try:
     bot = telepot.Bot(os.environ['TELEGRAM_API_KEY'])
@@ -10,17 +10,17 @@ except telepot.exception.BadHTTPResponse:
     print('Received a bad HTTP response while getting connection to bot')
     exit(1)
 
-with open('greeting_quotes.yml', encoding='utf8') as file:
-    try:
-        greeting_quotes = yaml.load(file.read())['quotes']
-    except:
-        print('Unable to read quotes')
+try:
+    greeting_quotes = load_quotes('quotes/greeting.txt')
+except:
+    print('Unable to read quotes')
+    exit(1)
 
-with open('goodbye_quotes.yml', encoding='utf8') as file:
-    try:
-        goodbye_quotes = yaml.load(file.read())['quotes']
-    except:
-        print('Unable to read quotes')
+try:
+    goodbye_quotes = load_quotes('quotes/goodbye.txt')
+except:
+    print('Unable to read quotes')
+    exit(1)
 
 
 # see https://core.telegram.org/bots/api
