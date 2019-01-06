@@ -22,6 +22,11 @@ except:
     print('Unable to read quotes')
     exit(1)
 
+try:
+    facts = load_quotes('quotes/facts.txt')
+except:
+    print('Unable to read facts')
+    exit(1)
 
 # see https://core.telegram.org/bots/api
 def handle(message):
@@ -30,6 +35,9 @@ def handle(message):
 
     if 'left_chat_member' in message:
         return bot.sendMessage(message['chat']['id'], random.choice(goodbye_quotes))
+
+    if 'text' in message and message['text'].startsWith('/fact'):
+        return bot.sendMessage(message['chat']['id'], random.choice(facts))
 
 
 bot.message_loop(handle)
