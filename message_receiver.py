@@ -41,7 +41,7 @@ def handle(message):
     if 'left_chat_member' in message:
         if message['left_chat_member']['id'] == bot.getMe()['id']:
             print('Was removed from group "{}" with id "{}"'.format(message['chat']['title'], message['chat']['id']))
-            break
+            return
 
         return bot.sendMessage(message['chat']['id'], random.choice(goodbye_quotes))
 
