@@ -45,7 +45,7 @@ def handle(message):
 
         return bot.sendMessage(message['chat']['id'], random.choice(goodbye_quotes))
 
-    if 'text' in message and message['text'].startsWith('/fact'):
+    if 'text' in message and message['text'].startswith('/fact'):
         return bot.sendMessage(message['chat']['id'], random.choice(facts))
 
 
