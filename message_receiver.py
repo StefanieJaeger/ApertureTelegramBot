@@ -31,9 +31,18 @@ except:
 # see https://core.telegram.org/bots/api
 def handle(message):
     if 'new_chat_members' in message:
+        for new_chat_member in message['new_chat_members']:
+            if new_chat_member['id'] == bot.getMe()['id']:
+                print('Was added to group "{}" with id "{}"'.format(message['chat']['title'], message['chat']['id']))
+                break
+
         return bot.sendMessage(message['chat']['id'], random.choice(greeting_quotes))
 
     if 'left_chat_member' in message:
+        if message['left_chat_member']['id'] == bot.getMe()['id']:
+            print('Was removed from group "{}" with id "{}"'.format(message['chat']['title'], message['chat']['id']))
+            break
+
         return bot.sendMessage(message['chat']['id'], random.choice(goodbye_quotes))
 
     if 'text' in message and message['text'].startsWith('/fact'):
