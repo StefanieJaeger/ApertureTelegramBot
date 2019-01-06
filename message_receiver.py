@@ -34,7 +34,7 @@ def handle(message):
         for new_chat_member in message['new_chat_members']:
             if new_chat_member['id'] == bot.getMe()['id']:
                 print('Was added to group "{}" with id "{}"'.format(message['chat']['title'], message['chat']['id']))
-                break
+                return
 
         return bot.sendMessage(message['chat']['id'], random.choice(greeting_quotes))
 
