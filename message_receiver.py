@@ -28,6 +28,7 @@ except:
     print('Unable to read facts')
     exit(1)
 
+
 # see https://core.telegram.org/bots/api
 def handle(message):
     if 'new_chat_members' in message:
