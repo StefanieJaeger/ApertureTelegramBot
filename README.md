@@ -6,7 +6,7 @@ A telegram bot, written in python, inspired by the Valve game Portal/Portal 2. R
 
 ## Environment variables
 - `TELEGRAM_API_KEY` The telegram api key
-- `GROUP_ID` The id of the group to send good morning messages to
+- `GROUP_ID` The id of the group to send messages to
 
 ## Usage
 
